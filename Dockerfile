@@ -5,5 +5,6 @@ RUN cargo test
 RUN cargo install --path .
 
 FROM debian:buster-slim
-COPY --from=builder /usr/local/cargo/bin/rocket-hello-world /usr/local/bin/rocket-hello-world
-ENTRYPOINT ["rocket-hello-world"]
+COPY --from=builder /usr/local/cargo/bin/rocket-hello-world ./
+COPY Rocket.toml ./
+CMD ["./rocket-hello-world"]
