@@ -1,9 +1,8 @@
 FROM rust:slim-buster as builder
-WORKDIR /usr/src/rocket-hello-world
 COPY . .
 RUN cargo test
-RUN cargo install --path .
+RUN cargo build --release
 
 FROM debian:buster-slim
-COPY --from=builder /usr/local/cargo/bin/rocket-hello-world ./
+COPY --from=builder target/release/rocket-hello-world ./
 CMD ["./rocket-hello-world"]
