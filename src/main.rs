@@ -13,8 +13,11 @@ fn rocket() -> rocket::Rocket {
         .and_then(|s| s.parse().ok())
         .unwrap_or(9000);
 
+    let host = std::env::var("HOST")
+        .unwrap_or("0.0.0.0".to_string());
+
     let figment = rocket::Config::figment()
-        .merge(("address", "0.0.0.0"))
+        .merge(("address", host))
         .merge(("port", port));
     rocket::custom(figment).mount("/", routes![hello])
 }
