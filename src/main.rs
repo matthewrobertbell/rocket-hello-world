@@ -3,7 +3,7 @@ extern crate rocket;
 
 #[get("/")]
 fn hello() -> &'static str {
-    "Hello, world! This is Rocket! This is a change to test CI!!"
+    "Hello, world! This is Rocket! This is a change to test CI!!!"
 }
 
 #[launch]
