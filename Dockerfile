@@ -4,5 +4,5 @@ RUN cargo test
 RUN cargo build
 
 FROM debian:buster-slim
-COPY --from=builder target/release/rocket-hello-world ./
+COPY --from=builder target/debug/rocket-hello-world ./
 CMD ["./rocket-hello-world"]
